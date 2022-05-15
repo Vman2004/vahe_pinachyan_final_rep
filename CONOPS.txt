@@ -1,0 +1,12 @@
+The objective of the program is to take a string and convert it into an md5hash in C.
+The Goal is to be able to use any string, regardless of length and still find a correct hash.
+
+MD5 works first by taking a string, and converting it into a "message" of length 512 bits. 
+This is done by taking each character's ASCII integer value, and appending it to an array of integers. At the end, we appenx a 1 bit, then pad 0s until we reach 448bits.
+the final 64 bits are used for storing the number of bits the string is.
+The key is that if the string size(number of bits) surpasses 448bits, a second block of 512 bits is created. 
+Each block of the message is divided into 16 parts. 
+Then, we take initiation vectors A, B, C, D.
+We do 4 rounds of 16 operations using these vectors which will change their values, where each round has a different function.
+At the end, we add the first values of the vectors back to themselves, and if there are more than 1 blocks, repeat.
+At the end, we recieve the MD5 hash thru the 4 vectors.
